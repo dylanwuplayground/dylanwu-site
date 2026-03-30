@@ -2,6 +2,7 @@ import Sidebar from "@/components/Sidebar";
 import Hero from "@/components/Hero";
 import DomainExpertise from "@/components/DomainExpertise";
 import Experience from "@/components/Experience";
+import TechStack from "@/components/TechStack";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <DomainExpertise />
         <Experience />
+        <TechStack />
       </main>
     </>
   );
