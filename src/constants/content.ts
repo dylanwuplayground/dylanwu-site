@@ -74,11 +74,11 @@ export const experience = [
 export const techStack = [
   {
     function: "Analytics Engineering",
-    tools: ["dbt", "Snowflake", "Databricks", "PySpark", "S3"],
+    tools: ["dbt", "Snowflake", "Databricks", "PySpark", "S3", "mParticle", "Redshift"],
   },
   {
     function: "Data Analysis & Science",
-    tools: ["SQL", "Python", "Statistics", "Experimentation"],
+    tools: ["SQL", "Python", "Statistics", "Experimentation", "Optimizely", "Split", "Amplitude"],
   },
   {
     function: "Business Intelligence",
