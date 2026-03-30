@@ -12,10 +12,12 @@ export default function Education() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-3xl font-heading font-bold text-text-bright mb-2">
+        <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-4">
+          Academic Background
+        </p>
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-10">
           Education
         </h2>
-        <p className="text-text-muted mb-10">Academic background</p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">

@@ -12,12 +12,12 @@ export default function Experience() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-3xl font-heading font-bold text-text-bright mb-2">
+        <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-4">
+          Professional Chronology
+        </p>
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-12">
           Experience
         </h2>
-        <p className="text-text-muted mb-12">
-          10 years across five startups
-        </p>
       </motion.div>
 
       <div className="relative">

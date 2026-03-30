@@ -45,11 +45,11 @@ export default function DomainExpertise() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-3xl font-heading font-bold text-text-bright mb-2">
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-2">
           Domain Expertise
         </h2>
-        <p className="text-text-muted mb-10">
-          Where I create the most impact
+        <p className="text-text-muted text-sm tracking-wide uppercase mb-10">
+          Core Competencies
         </p>
       </motion.div>
 
@@ -71,7 +71,7 @@ export default function DomainExpertise() {
                 {domainIcons[domain.title]}
               </span>
               <div>
-                <h3 className="font-heading font-semibold text-text-bright mb-2">
+                <h3 className="font-heading font-bold text-text-bright text-lg mb-2">
                   {domain.title}
                 </h3>
                 <p className="text-sm text-text-muted leading-relaxed md:opacity-0 md:max-h-0 md:group-hover:opacity-100 md:group-hover:max-h-40 transition-all duration-300">

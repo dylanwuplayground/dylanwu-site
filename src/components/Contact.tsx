@@ -14,8 +14,11 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <h2 className="text-3xl font-heading font-bold text-text-bright mb-2">
-            Contact
+          <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-4">
+            Inquiry
+          </p>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-2">
+            Get in Touch
           </h2>
           <p className="text-text-muted mb-10">{contact.cta}</p>
         </motion.div>
