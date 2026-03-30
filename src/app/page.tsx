@@ -4,6 +4,7 @@ import DomainExpertise from "@/components/DomainExpertise";
 import Experience from "@/components/Experience";
 import TechStack from "@/components/TechStack";
 import Education from "@/components/Education";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <Experience />
         <TechStack />
         <Education />
+        <Contact />
       </main>
     </>
   );
