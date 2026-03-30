@@ -18,7 +18,7 @@ export default function Education() {
         <p className="text-text-muted mb-10">Academic background</p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
         {education.map((edu, i) => (
           <motion.div
             key={edu.school}
@@ -26,12 +26,12 @@ export default function Education() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
-            className="bg-surface border border-border rounded-xl p-6 hover:border-primary/30 transition-colors"
+            className="bg-surface border border-border rounded-xl p-8 hover:border-primary/30 transition-colors"
           >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
                 <svg
-                  className="w-5 h-5 text-primary"
+                  className="w-7 h-7 text-primary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -44,12 +44,12 @@ export default function Education() {
                   />
                 </svg>
               </div>
-              <h3 className="font-heading font-semibold text-text-bright">
+              <h3 className="font-heading font-semibold text-text-bright text-lg">
                 {edu.school}
               </h3>
             </div>
-            <p className="text-text text-sm">{edu.degree}</p>
-            <p className="text-text-muted text-sm mt-1">{edu.year}</p>
+            <p className="text-text">{edu.degree}</p>
+            <p className="text-text-muted mt-1">{edu.year}</p>
           </motion.div>
         ))}
       </div>

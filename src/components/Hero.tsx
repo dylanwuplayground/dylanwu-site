@@ -110,7 +110,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="mt-8 flex gap-4"
+          className="mt-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
@@ -120,12 +120,6 @@ export default function Hero() {
             className="px-6 py-3 bg-primary hover:bg-primary-hover text-text-bright font-medium rounded-lg transition-colors"
           >
             Get in touch
-          </a>
-          <a
-            href="#expertise"
-            className="px-6 py-3 border border-border hover:border-primary text-text-muted hover:text-text-bright rounded-lg transition-colors"
-          >
-            View work
           </a>
         </motion.div>
       </div>

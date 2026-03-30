@@ -67,7 +67,7 @@ export default function Sidebar() {
         <div className="p-4 border-t border-border space-y-3">
           <div className="flex gap-3 px-3">
             <a
-              href="https://linkedin.com/in/dylanwu"
+              href="https://www.linkedin.com/in/dylanwu/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-muted hover:text-primary transition-colors"
@@ -78,7 +78,7 @@ export default function Sidebar() {
               </svg>
             </a>
             <a
-              href="https://github.com/dylanwu"
+              href="https://github.com/dylanwuplayground"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-muted hover:text-primary transition-colors"
@@ -149,7 +149,7 @@ export default function Sidebar() {
               <div className="p-4 border-t border-border">
                 <div className="flex gap-3 px-3">
                   <a
-                    href="https://linkedin.com/in/dylanwu"
+                    href="https://www.linkedin.com/in/dylanwu/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-text-muted hover:text-primary transition-colors"
@@ -160,7 +160,7 @@ export default function Sidebar() {
                     </svg>
                   </a>
                   <a
-                    href="https://github.com/dylanwu"
+                    href="https://github.com/dylanwuplayground"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-text-muted hover:text-primary transition-colors"
