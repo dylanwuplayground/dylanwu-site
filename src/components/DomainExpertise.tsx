@@ -64,7 +64,7 @@ export default function DomainExpertise() {
             className="group relative bg-surface border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 overflow-hidden cursor-default"
           >
             {/* Left accent bar on hover */}
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-l-xl" />
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary md:scale-y-0 md:group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-l-xl" />
 
             <div className="flex items-start gap-4">
               <span className="text-text-muted group-hover:text-primary transition-colors duration-300 shrink-0 mt-0.5">
@@ -74,7 +74,7 @@ export default function DomainExpertise() {
                 <h3 className="font-heading font-semibold text-text-bright mb-2">
                   {domain.title}
                 </h3>
-                <p className="text-sm text-text-muted leading-relaxed opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-40 transition-all duration-300">
+                <p className="text-sm text-text-muted leading-relaxed md:opacity-0 md:max-h-0 md:group-hover:opacity-100 md:group-hover:max-h-40 transition-all duration-300">
                   {domain.description}
                 </p>
               </div>
