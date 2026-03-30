@@ -3,43 +3,43 @@
     {
       "name": "Sidebar",
       "file": "src/components/Sidebar.tsx",
-      "status": "pending",
+      "status": "built",
       "depends_on": []
     },
     {
       "name": "Hero",
       "file": "src/components/Hero.tsx",
-      "status": "pending",
+      "status": "built",
       "depends_on": []
     },
     {
       "name": "DomainExpertise",
       "file": "src/components/DomainExpertise.tsx",
-      "status": "pending",
+      "status": "built",
       "depends_on": []
     },
     {
       "name": "Experience",
       "file": "src/components/Experience.tsx",
-      "status": "pending",
+      "status": "built",
       "depends_on": []
     },
     {
       "name": "TechStack",
       "file": "src/components/TechStack.tsx",
-      "status": "pending",
+      "status": "built",
       "depends_on": []
     },
     {
       "name": "Education",
       "file": "src/components/Education.tsx",
-      "status": "pending",
+      "status": "built",
       "depends_on": []
     },
     {
       "name": "Contact",
       "file": "src/components/Contact.tsx",
-      "status": "pending",
+      "status": "built",
       "depends_on": []
     }
   ]
