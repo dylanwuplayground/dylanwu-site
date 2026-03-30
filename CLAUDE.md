@@ -62,8 +62,8 @@ Personal portfolio site for Dylan Wu at dylanwu.me. Next.js + Tailwind CSS, depl
 
 | Function | Tools |
 |----------|-------|
-| Analytics Engineering | dbt, Snowflake, Databricks, PySpark, S3 |
-| Data Analysis & Science | SQL, Python, Statistics, Experimentation |
+| Analytics Engineering | dbt, Snowflake, Databricks, PySpark, S3, mParticle, Redshift |
+| Data Analysis & Science | SQL, Python, Statistics, Experimentation, Optimizely, Split, Amplitude |
 | Business Intelligence | Tableau, Metabase |
 | AI & Development | Claude Code |
 
@@ -77,8 +77,18 @@ Data sources (separate line): Backend systems, mobile & web events, third-party 
 "Want to build a data strategy for your company? Let's talk."
 
 ### Contact
-- LinkedIn + GitHub (visible links)
-- Email as inquiry/inbox form (not displayed as plain text)
+- LinkedIn: linkedin.com/in/yilewu/
+- GitHub: github.com/dylanwuplayground
+- Email via FormSubmit.co form (sends to dylanwu516@gmail.com, not displayed as plain text)
+
+## Post-Build Decisions (user-directed, 2026-03-29)
+
+- **LinkedIn URL**: linkedin.com/in/yilewu/ (not /dylanwu/)
+- **GitHub URL**: github.com/dylanwuplayground
+- **Hero**: "View work" button removed — only "Get in touch" CTA remains
+- **Contact form**: Uses FormSubmit.co to forward submissions to dylanwu516@gmail.com; section centered on page
+- **Education cards**: Enlarged (bigger icons, padding, text) per user request
+- **Tech stack additions**: mParticle, Redshift (Analytics Engineering); Optimizely, Split, Amplitude (Data Analysis & Science)
 
 ## Development Process
 
