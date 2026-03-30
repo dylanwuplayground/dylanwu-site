@@ -101,9 +101,40 @@ Data sources (separate line): Backend systems, mobile & web events, third-party 
 - Never mark a feature passing without QA + Design approval
 - All content comes from this file — do not invent or change copy
 
+## Consistency Rules
+
+### 1. Design Tokens in Tailwind Config Only
+All colors, fonts, spacing defined once in `tailwind.config.ts`. Never hardcode hex values in components.
+```
+// Correct: className="text-primary bg-background"
+// Wrong:   className="text-[#C26D4D] bg-[#131313]"
+```
+
+### 2. Component Inventory (JSON)
+`component-inventory.json` tracks what's built, where it lives, what it depends on. Read before touching any component.
+
+### 3. One Component Per File
+Each section = one file. Agent working on Experience never accidentally breaks Hero.
+```
+src/components/
+  Sidebar.tsx
+  Hero.tsx
+  DomainExpertise.tsx
+  Experience.tsx
+  TechStack.tsx
+  Education.tsx
+  Contact.tsx
+```
+
+### 4. Shared Constants File
+All content strings in `constants/content.ts`. Agent changing copy never touches layout code. Layout agent never touches copy.
+
+### 5. Screenshot Baseline for QA
+After each feature passes QA, save a Playwright screenshot. Future QA agents compare against baseline to catch visual regressions.
+
 ## Tech Stack
 
 - Next.js (App Router, TypeScript)
 - Tailwind CSS
-- Framer Motion (animations)
+- Framer Motion (animations — declarative in JSX, self-documenting for future agents)
 - Deployed to Vercel
