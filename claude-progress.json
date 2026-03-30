@@ -1,0 +1,13 @@
+{
+  "sessions": [
+    {
+      "id": 0,
+      "date": "2026-03-29",
+      "agent": "setup",
+      "summary": "Created harness artifacts: CLAUDE.md, feature_list.json, claude-progress.json, init.sh",
+      "features_worked_on": [],
+      "outcome": "ready",
+      "notes": "Project not yet scaffolded. Feature 1 (scaffold) is next."
+    }
+  ]
+}

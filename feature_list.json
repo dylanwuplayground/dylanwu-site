@@ -1,0 +1,74 @@
+{
+  "features": [
+    {
+      "id": 1,
+      "name": "Project scaffold",
+      "description": "Next.js + Tailwind + TypeScript + Framer Motion setup, dev server running",
+      "passes": false,
+      "priority": 1
+    },
+    {
+      "id": 2,
+      "name": "Sidebar navigation",
+      "description": "Fixed left sidebar (desktop) with name, nav links with icons, Download CV button, social links. Hamburger menu on mobile. Space Grotesk font.",
+      "passes": false,
+      "priority": 2
+    },
+    {
+      "id": 3,
+      "name": "Hero section",
+      "description": "Large name 'Dylan Wu', sub tagline, location. Typing animation. Background data viz simulation. CTA buttons. Content from CLAUDE.md.",
+      "passes": false,
+      "priority": 3
+    },
+    {
+      "id": 4,
+      "name": "Domain expertise bento grid",
+      "description": "6 bento cards in grid layout. Each card: icon, domain title, description hidden until hover/click. Hover reveals description with slide-up animation. Cards have left accent bar on hover. Content from CLAUDE.md.",
+      "passes": false,
+      "priority": 4
+    },
+    {
+      "id": 5,
+      "name": "Experience timeline",
+      "description": "5 entries with company, role, period, domain. Alternating left/right layout on desktop. Vertical line connector. Diamond markers. Content from CLAUDE.md.",
+      "passes": false,
+      "priority": 5
+    },
+    {
+      "id": 6,
+      "name": "Tech stack section",
+      "description": "4 function groups with tools. Animated skill bars. Grid of tool icons. Data sources line. Content from CLAUDE.md.",
+      "passes": false,
+      "priority": 6
+    },
+    {
+      "id": 7,
+      "name": "Education section",
+      "description": "USC and University of Iowa entries. Clean, minimal layout. Content from CLAUDE.md.",
+      "passes": false,
+      "priority": 7
+    },
+    {
+      "id": 8,
+      "name": "Contact section",
+      "description": "Inquiry form (project type, email, message). LinkedIn + GitHub links. No visible email address. Footer with copyright.",
+      "passes": false,
+      "priority": 8
+    },
+    {
+      "id": 9,
+      "name": "Responsive mobile layout",
+      "description": "All sections work on mobile. Sidebar collapses to hamburger. Timeline stacks vertically. Bento grid stacks to single column.",
+      "passes": false,
+      "priority": 9
+    },
+    {
+      "id": 10,
+      "name": "Animations and polish",
+      "description": "Typing animation in hero. Hover effects on domain cards. Scroll-triggered skill bar animations. Smooth scroll between sections. Scanline overlay. Framer Motion transitions.",
+      "passes": false,
+      "priority": 10
+    }
+  ]
+}
