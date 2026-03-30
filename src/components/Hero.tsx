@@ -1,11 +1,51 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { hero } from "@/constants/content";
+
+function TypingAnimation({ text, delay = 0 }: { text: string; delay?: number }) {
+  const [displayed, setDisplayed] = useState("");
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const startTimer = setTimeout(() => setStarted(true), delay);
+    return () => clearTimeout(startTimer);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+    if (displayed.length >= text.length) return;
+
+    const timer = setTimeout(() => {
+      setDisplayed(text.slice(0, displayed.length + 1));
+    }, 30 + Math.random() * 40);
+
+    return () => clearTimeout(timer);
+  }, [displayed, started, text]);
+
+  return (
+    <span>
+      {displayed}
+      {displayed.length < text.length && (
+        <span className="inline-block w-[2px] h-[1em] bg-primary ml-0.5 animate-pulse align-text-bottom" />
+      )}
+    </span>
+  );
+}
 
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center px-6 md:px-12 overflow-hidden">
+      {/* Scanline overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-20 opacity-[0.015]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)",
+        }}
+      />
+
       {/* Background data viz simulation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 opacity-[0.03]">
@@ -60,14 +100,14 @@ export default function Hero() {
           {hero.name}
         </motion.h1>
 
-        <motion.p
-          className="text-lg md:text-xl text-text-muted leading-relaxed max-w-xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+        <motion.div
+          className="text-lg md:text-xl text-text-muted leading-relaxed max-w-xl min-h-[3.5rem]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.6 }}
         >
-          {hero.tagline}
-        </motion.p>
+          <TypingAnimation text={hero.tagline} delay={800} />
+        </motion.div>
 
         <motion.div
           className="mt-8 flex gap-4"
