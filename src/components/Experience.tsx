@@ -17,6 +17,110 @@ function RocketIcon() {
   );
 }
 
+// Card content shared between desktop and mobile layouts
+function CardContent({ exp }: { exp: (typeof experience)[number] }) {
+  return (
+    <>
+      <h3 className="font-heading font-semibold text-text-bright text-lg">
+        {exp.company}
+      </h3>
+      <p className="text-primary text-sm mt-1 font-mono">{exp.role}</p>
+      <p className="text-text-muted text-sm mt-1 font-mono">{exp.period}</p>
+      <p className="text-text-muted text-sm mt-2 border-t border-border pt-2">
+        {exp.domain}
+      </p>
+      {exp.highlights && (
+        <ul className="mt-3 space-y-1.5 border-t border-border pt-3">
+          {exp.highlights.map((h, hi) => (
+            <li key={hi} className="text-text-muted text-xs leading-relaxed flex gap-2">
+              <span className="text-primary mt-1 shrink-0">▸</span>
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}
+
+// Single experience card with barrel scroll transforms
+function ExperienceCard({
+  exp,
+  index,
+}: {
+  exp: (typeof experience)[number];
+  index: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isLeft = index % 2 === 0;
+
+  // Track this card's scroll position through the viewport
+  // 0 = card just entering from bottom, 0.5 = card centered, 1 = card exiting top
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Barrel transforms: entering (0) -> center (0.5) -> exiting (1)
+  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [45, 0, -45]);
+  const translateZ = useTransform(scrollYProgress, [0, 0.5, 1], [-100, 0, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [0.3, 0.8, 1, 0.8, 0.3]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      style={{
+        rotateX,
+        translateZ,
+        opacity,
+        scale,
+        transformOrigin: "center center",
+      }}
+      className="relative flex items-start"
+    >
+      {/* Diamond marker — pulses when in view */}
+      <motion.div
+        className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-primary rotate-45 z-10 mt-2"
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3, delay: 0.2 }}
+      />
+
+      {/* Desktop: alternating layout */}
+      <div className="hidden md:grid md:grid-cols-2 w-full gap-8">
+        {isLeft ? (
+          <>
+            <div className="text-right pr-8">
+              <div className="bg-surface border border-border rounded-xl p-6 inline-block text-left hover:border-primary/30 transition-colors max-w-md">
+                <CardContent exp={exp} />
+              </div>
+            </div>
+            <div />
+          </>
+        ) : (
+          <>
+            <div />
+            <div className="pl-8">
+              <div className="bg-surface border border-border rounded-xl p-6 inline-block hover:border-primary/30 transition-colors max-w-md">
+                <CardContent exp={exp} />
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Mobile: all left-aligned */}
+      <div className="md:hidden ml-10">
+        <div className="bg-surface border border-border rounded-xl p-5 hover:border-primary/30 transition-colors">
+          <CardContent exp={exp} />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Experience() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -45,7 +149,11 @@ export default function Experience() {
         </h2>
       </motion.div>
 
-      <div ref={containerRef} className="relative">
+      <div
+        ref={containerRef}
+        className="relative"
+        style={{ perspective: "800px" }}
+      >
         {/* Static track line (faint) */}
         <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border/30 md:-translate-x-px" />
 
@@ -67,110 +175,9 @@ export default function Experience() {
         </motion.div>
 
         <div className="space-y-16">
-          {experience.map((exp, i) => {
-            const isLeft = i % 2 === 0;
-
-            return (
-              <motion.div
-                key={exp.company}
-                initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-                className="relative flex items-start"
-              >
-                {/* Diamond marker — pulses when in view */}
-                <motion.div
-                  className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-primary rotate-45 z-10 mt-2"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.2 }}
-                />
-
-                {/* Desktop: alternating layout */}
-                <div className="hidden md:grid md:grid-cols-2 w-full gap-8">
-                  {isLeft ? (
-                    <>
-                      <div className="text-right pr-8">
-                        <div className="bg-surface border border-border rounded-xl p-6 inline-block text-left hover:border-primary/30 transition-colors max-w-md">
-                          <h3 className="font-heading font-semibold text-text-bright text-lg">
-                            {exp.company}
-                          </h3>
-                          <p className="text-primary text-sm mt-1 font-mono">{exp.role}</p>
-                          <p className="text-text-muted text-sm mt-1 font-mono">{exp.period}</p>
-                          <p className="text-text-muted text-sm mt-2 border-t border-border pt-2">
-                            {exp.domain}
-                          </p>
-                          {exp.highlights && (
-                            <ul className="mt-3 space-y-1.5 border-t border-border pt-3">
-                              {exp.highlights.map((h, hi) => (
-                                <li key={hi} className="text-text-muted text-xs leading-relaxed flex gap-2">
-                                  <span className="text-primary mt-1 shrink-0">▸</span>
-                                  <span>{h}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      </div>
-                      <div />
-                    </>
-                  ) : (
-                    <>
-                      <div />
-                      <div className="pl-8">
-                        <div className="bg-surface border border-border rounded-xl p-6 inline-block hover:border-primary/30 transition-colors max-w-md">
-                          <h3 className="font-heading font-semibold text-text-bright text-lg">
-                            {exp.company}
-                          </h3>
-                          <p className="text-primary text-sm mt-1 font-mono">{exp.role}</p>
-                          <p className="text-text-muted text-sm mt-1 font-mono">{exp.period}</p>
-                          <p className="text-text-muted text-sm mt-2 border-t border-border pt-2">
-                            {exp.domain}
-                          </p>
-                          {exp.highlights && (
-                            <ul className="mt-3 space-y-1.5 border-t border-border pt-3">
-                              {exp.highlights.map((h, hi) => (
-                                <li key={hi} className="text-text-muted text-xs leading-relaxed flex gap-2">
-                                  <span className="text-primary mt-1 shrink-0">▸</span>
-                                  <span>{h}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                {/* Mobile: all left-aligned */}
-                <div className="md:hidden ml-10">
-                  <div className="bg-surface border border-border rounded-xl p-5 hover:border-primary/30 transition-colors">
-                    <h3 className="font-heading font-semibold text-text-bright">
-                      {exp.company}
-                    </h3>
-                    <p className="text-primary text-sm mt-1 font-mono">{exp.role}</p>
-                    <p className="text-text-muted text-sm mt-1 font-mono">{exp.period}</p>
-                    <p className="text-text-muted text-sm mt-2 border-t border-border pt-2">
-                      {exp.domain}
-                    </p>
-                    {exp.highlights && (
-                      <ul className="mt-3 space-y-1.5 border-t border-border pt-3">
-                        {exp.highlights.map((h, hi) => (
-                          <li key={hi} className="text-text-muted text-xs leading-relaxed flex gap-2">
-                            <span className="text-primary mt-1 shrink-0">▸</span>
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+          {experience.map((exp, i) => (
+            <ExperienceCard key={exp.company} exp={exp} index={i} />
+          ))}
         </div>
       </div>
     </section>
