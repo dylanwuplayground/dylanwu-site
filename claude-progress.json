@@ -107,6 +107,15 @@
       "features_worked_on": [2, 3, 6, 7, 8],
       "outcome": "pass",
       "notes": "Updated CLAUDE.md with post-build decisions so future agents understand the rationale."
+    },
+    {
+      "id": 12,
+      "date": "2026-03-30",
+      "agent": "human+claude",
+      "summary": "Major refinements: Stitch-style typography (larger headings, tracking-tight, uppercase labels), hero rework (copper italic accents, typing animation), domain descriptions fixed to noun-start, experience highlights from resume, school logos (USC Trojan + Iowa Hawkeye), terminal status bar, JetBrains Mono for metadata, glitch hover effect, terminal section transitions, drum/barrel scroll on experience timeline with year markers, removed rocket icon.",
+      "features_worked_on": [2, 3, 4, 5, 7, 10],
+      "outcome": "pass",
+      "notes": "Experience section: drum scroll uses scale+Y-offset (no rotateX to avoid blur). Year markers on left, cards on right, 3-column grid. Text sharpness confirmed after multiple iterations. Rocket removed. Next: add directional rocket back with scroll-direction awareness."
     }
   ]
 }
