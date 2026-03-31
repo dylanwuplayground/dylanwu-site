@@ -62,10 +62,11 @@ function ExperienceCard({
   });
 
   // Barrel transforms: entering (0) -> center (0.5) -> exiting (1)
-  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [45, 0, -45]);
-  const translateZ = useTransform(scrollYProgress, [0, 0.5, 1], [-100, 0, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [0.3, 0.8, 1, 0.8, 0.3]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
+  // Reduced translateZ to prevent subpixel blur on text
+  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [30, 0, -30]);
+  const translateZ = useTransform(scrollYProgress, [0, 0.5, 1], [-30, 0, -30]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [0, 0.8, 1, 0.8, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1, 0.92]);
 
   return (
     <motion.div
@@ -76,6 +77,7 @@ function ExperienceCard({
         opacity,
         scale,
         transformOrigin: "center center",
+        willChange: "transform, opacity",
       }}
       className="relative flex items-start"
     >
