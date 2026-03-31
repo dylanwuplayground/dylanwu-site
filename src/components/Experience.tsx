@@ -263,31 +263,39 @@ function DirectionalRocket({
   // Trail follows rocket position
   const trailProgress = useTransform(scrollYProgress, [0.05, 0.9], [0, 100]);
 
+  // Animated trail: grows slowly from the rocket like exhaust building up
+  const trailLength = useTransform(trailProgress, (v) => `${Math.min(v, 30)}%`);
+  const trailLengthUp = useTransform(trailProgress, (v) => `${Math.min(100 - v, 30)}%`);
+
   return (
     <>
-      {/* Trail line — switches sides based on scroll direction */}
-      {/* Scrolling down: trail above rocket (top-anchored) */}
+      {/* Trail — animated exhaust that slowly grows behind the rocket */}
+      {/* Scrolling down: trail grows upward from rocket position */}
       <motion.div
-        className="absolute w-[2px] origin-top"
+        className="absolute w-[2px]"
+        animate={{ opacity: scrollDir === "down" ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
         style={{
           left: "140px",
-          top: 0,
-          height: useTransform(trailProgress, (v) => `${v}%`),
+          top: useTransform(trailProgress, (v) => `${Math.max(0, v - 30)}%`),
+          height: trailLength,
           translateX: "-0.5px",
-          opacity: scrollDir === "down" ? 1 : 0,
-          background: "linear-gradient(to bottom, transparent, var(--color-primary))",
+          background: "linear-gradient(to bottom, transparent 0%, var(--color-primary) 40%, var(--color-primary) 100%)",
+          filter: "blur(0.5px)",
         }}
       />
-      {/* Scrolling up: trail below rocket (bottom-anchored) */}
+      {/* Scrolling up: trail grows downward from rocket position */}
       <motion.div
-        className="absolute w-[2px] origin-bottom"
+        className="absolute w-[2px]"
+        animate={{ opacity: scrollDir === "up" ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
         style={{
           left: "140px",
-          bottom: 0,
-          height: useTransform(trailProgress, (v) => `${100 - v}%`),
+          top: useTransform(trailProgress, (v) => `${v}%`),
+          height: trailLengthUp,
           translateX: "-0.5px",
-          opacity: scrollDir === "up" ? 1 : 0,
-          background: "linear-gradient(to top, transparent, var(--color-primary))",
+          background: "linear-gradient(to top, transparent 0%, var(--color-primary) 40%, var(--color-primary) 100%)",
+          filter: "blur(0.5px)",
         }}
       />
 
