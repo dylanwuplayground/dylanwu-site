@@ -93,31 +93,40 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
     offset: ["start end", "end start"],
   });
 
-  // Drum effect via scale + Y-offset + opacity (no rotateX = no blur)
-  // Cards compress and shift as they enter/exit, creating barrel illusion
-  const y = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [80, 20, 0, -20, -80]);
-  const scaleX = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [0.75, 0.92, 1, 0.92, 0.75]);
-  const scaleY = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [0.6, 0.9, 1, 0.9, 0.6]);
+  // Cylinder/drum rotation: cards bend around a barrel surface
+  // Outer wrapper rotates in 3D, inner card stays flat for sharp text
+  const rotateX = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [40, 12, 0, -12, -40]);
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [60, 15, 0, -15, -60]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [0.88, 0.96, 1, 0.96, 0.88]);
   const opacity = useTransform(
     scrollYProgress,
     [0, 0.15, 0.3, 0.7, 0.85, 1],
-    [0, 0.3, 1, 1, 0.3, 0],
+    [0, 0.4, 1, 1, 0.4, 0],
   );
 
   return (
     <motion.div
       ref={cardRef}
       style={{
+        rotateX,
         y,
-        scaleX,
-        scaleY,
+        scale,
         opacity,
         transformOrigin: "center center",
+        transformStyle: "preserve-3d",
         willChange: "transform, opacity",
       }}
-      className="bg-surface border border-border rounded-xl p-6 hover:border-primary/30 transition-colors"
     >
-      <CardContent exp={exp} />
+      {/* Inner card: force own compositing layer to keep text sharp */}
+      <div
+        className="bg-surface border border-border rounded-xl p-6 hover:border-primary/30 transition-colors"
+        style={{
+          backfaceVisibility: "hidden",
+          transform: "translateZ(0)",
+        }}
+      >
+        <CardContent exp={exp} />
+      </div>
     </motion.div>
   );
 }
