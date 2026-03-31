@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useMemo } from "react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useRef, useMemo, useState } from "react";
 import { experience } from "@/constants/content";
 
 // ---------------------------------------------------------------------------
@@ -166,6 +166,77 @@ function computeYearLabelsForRoles(roles: TimelineRole[]) {
 // Main Experience component
 // ---------------------------------------------------------------------------
 
+// Directional rocket that follows scroll and flips based on direction
+function DirectionalRocket({
+  scrollYProgress,
+}: {
+  scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"];
+}) {
+  const [scrollDir, setScrollDir] = useState<"down" | "up">("down");
+  const prevProgress = useRef(0);
+
+  // Track scroll direction
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (latest > prevProgress.current + 0.001) {
+      setScrollDir("down");
+    } else if (latest < prevProgress.current - 0.001) {
+      setScrollDir("up");
+    }
+    prevProgress.current = latest;
+  });
+
+  // Rocket position follows scroll
+  const rocketTop = useTransform(scrollYProgress, [0.05, 0.9], ["0%", "100%"]);
+  // Trail height follows rocket
+  const trailHeight = useTransform(scrollYProgress, [0.05, 0.9], ["0%", "100%"]);
+
+  return (
+    <>
+      {/* Trail line — always behind the rocket */}
+      <motion.div
+        className="absolute w-[2px] bg-gradient-to-b from-primary/0 via-primary/60 to-primary/0 origin-top"
+        style={{
+          left: "140px",
+          top: 0,
+          height: trailHeight,
+          translateX: "-0.5px",
+        }}
+      />
+
+      {/* Rocket icon */}
+      <motion.div
+        className="absolute z-20"
+        style={{
+          left: "140px",
+          top: rocketTop,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+      >
+        <motion.div
+          animate={{ rotate: scrollDir === "down" ? 180 : 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="w-6 h-6 drop-shadow-[0_0_6px_rgba(194,109,77,0.6)]"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
+              className="text-primary"
+            />
+          </svg>
+        </motion.div>
+      </motion.div>
+    </>
+  );
+}
+
 export default function Experience() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -228,11 +299,8 @@ export default function Experience() {
             style={{ left: "140px" }}
           />
 
-          {/* --- Animated drawing line (bright) --- */}
-          <motion.div
-            className="absolute top-0 w-px bg-primary/60 origin-top"
-            style={{ left: "140px", height: lineHeight }}
-          />
+          {/* --- Directional rocket + trail --- */}
+          <DirectionalRocket scrollYProgress={scrollYProgress} />
 
           {/* --- Role rows --- */}
           <div className="space-y-20">
