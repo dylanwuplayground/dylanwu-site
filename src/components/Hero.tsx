@@ -91,38 +91,31 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* Big statement headline — Stitch style */}
+        {/* Name */}
         <motion.h1
-          className="text-6xl md:text-8xl font-heading font-bold leading-[0.9] tracking-tighter mb-8"
+          className="text-5xl md:text-7xl font-heading font-bold text-text-bright tracking-tighter mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
         >
-          <span className="text-text-bright">Building </span>
-          <span className="text-primary italic">Data-Driven</span>
-          <br />
-          <span className="text-text-bright">Cultures.</span>
+          {hero.name}
         </motion.h1>
 
-        {/* Name */}
-        <motion.p
-          className="text-2xl md:text-3xl font-heading font-bold text-text-bright tracking-tight mb-4"
+        {/* Big statement tagline — Stitch style with color accents */}
+        <motion.h2
+          className="text-4xl md:text-6xl font-heading font-bold leading-[1.05] tracking-tight mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          {hero.name}
-        </motion.p>
-
-        {/* Tagline with typing animation */}
-        <motion.div
-          className="text-lg md:text-xl text-text-muted leading-relaxed max-w-2xl min-h-[3.5rem]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.6 }}
-        >
-          <TypingAnimation text={hero.tagline} delay={800} />
-        </motion.div>
+          <span className="text-primary italic">Analytics Leader</span>
+          <span className="text-text-bright"> &amp; </span>
+          <span className="text-primary italic">AI Builder.</span>
+          <br />
+          <span className="text-text-muted/70 text-2xl md:text-3xl font-normal tracking-normal leading-relaxed mt-2 block">
+            10 years building data-driven cultures at high-growth startups.
+          </span>
+        </motion.h2>
 
         <motion.div
           className="flex gap-4 mt-10"
