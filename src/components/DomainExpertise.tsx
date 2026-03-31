@@ -61,7 +61,7 @@ export default function DomainExpertise() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
-            className="group relative bg-surface border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 overflow-hidden cursor-default"
+            className="group relative bg-surface border border-border rounded-xl p-8 min-h-[160px] hover:border-primary/50 transition-all duration-300 overflow-hidden cursor-default"
           >
             {/* Left accent bar on hover */}
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary md:scale-y-0 md:group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-l-xl" />

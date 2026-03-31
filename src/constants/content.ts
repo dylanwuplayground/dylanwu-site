@@ -14,7 +14,7 @@ export const domainExpertise = [
   {
     title: "Data Science",
     description:
-      "Uncovers what customers actually want and why — through data and experimentation — so product teams ship with insights, not luck.",
+      "Customer insight through data and experimentation — so product teams ship with insights, not luck.",
   },
   {
     title: "Data Strategy",
@@ -24,17 +24,17 @@ export const domainExpertise = [
   {
     title: "Product Strategy",
     description:
-      "Approaches product decisions from the PM seat: what problem are we solving, who is it for, and is it working. Uses data to sharpen product intuition, not replace it.",
+      "Product decisions from the PM seat: what problem are we solving, who is it for, and is it working. Data sharpens product intuition, not replaces it.",
   },
   {
     title: "Engineer Mind",
     description:
-      "Building beyond data: practical fluency across backend and frontend systems that sharpens judgment on what's possible, what's easy, and when the data isn't worth the plumbing.",
+      "Practical fluency across backend and frontend systems — sharpens judgment on what's possible, what's easy, and when the data isn't worth the plumbing.",
   },
   {
     title: "Data & Analytics Engineering",
     description:
-      "Builds the full path from raw data into reliable business insight — data modeling, transformations, and the quality controls that keep data trustworthy at every layer.",
+      "The full path from raw data into reliable business insight — data modeling, transformations, and the quality controls that keep data trustworthy at every layer.",
   },
 ];
 
