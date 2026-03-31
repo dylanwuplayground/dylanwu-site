@@ -263,9 +263,9 @@ function DirectionalRocket({
   // Trail follows rocket position
   const trailProgress = useTransform(scrollYProgress, [0.05, 0.9], [0, 100]);
 
-  // Animated trail: grows slowly from the rocket like exhaust building up
-  const trailLength = useTransform(trailProgress, (v) => `${Math.min(v, 30)}%`);
-  const trailLengthUp = useTransform(trailProgress, (v) => `${Math.min(100 - v, 30)}%`);
+  // Animated trail: short exhaust that builds up slowly behind the rocket
+  const trailLength = useTransform(trailProgress, (v) => `${Math.min(v * 0.4, 12)}%`);
+  const trailLengthUp = useTransform(trailProgress, (v) => `${Math.min((100 - v) * 0.4, 12)}%`);
 
   return (
     <>
@@ -277,7 +277,7 @@ function DirectionalRocket({
         transition={{ duration: 0.3 }}
         style={{
           left: "140px",
-          top: useTransform(trailProgress, (v) => `${Math.max(0, v - 30)}%`),
+          top: useTransform(trailProgress, (v) => `${Math.max(0, v - Math.min(v * 0.4, 12))}%`),
           height: trailLength,
           translateX: "-0.5px",
           background: "linear-gradient(to bottom, transparent 0%, var(--color-primary) 40%, var(--color-primary) 100%)",

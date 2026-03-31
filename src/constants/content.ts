@@ -66,6 +66,7 @@ export const experience = [
       highlights: [
         "Built and grew the product analytics team to 10 analysts, supporting 5+ product lines",
         "Improved forecasting accuracy by introducing time series models to predict customer growth trends",
+        "Promoted a company-wide experimentation culture by training product and engineering teams to design and interpret statistically sound tests",
       ],
     },
   },
