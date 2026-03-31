@@ -29,66 +29,77 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
+          {/* Terminal-style form */}
           <form
             action={`https://formsubmit.co/${contact.email}`}
             method="POST"
-            className="space-y-5"
+            className="bg-surface border border-border rounded-lg p-6 font-mono text-sm"
           >
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_subject" value="New inquiry from dylanwu.me" />
 
-            <div>
-              <label htmlFor="project-type" className="block text-sm text-text-muted mb-2">
-                Project type
-              </label>
-              <select
-                id="project-type"
-                name="project_type"
-                className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm focus:outline-none focus:border-primary transition-colors appearance-none"
+            {/* Terminal header */}
+            <div className="flex items-center gap-2 mb-6 pb-4 border-b border-border">
+              <div className="w-3 h-3 rounded-full bg-red-500/60" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+              <div className="w-3 h-3 rounded-full bg-green-500/60" />
+              <span className="ml-2 text-[10px] text-text-muted tracking-wider uppercase">inquiry.sh</span>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="project-type" className="block text-text-muted mb-1">
+                  <span className="text-primary">$</span> project_type=
+                </label>
+                <select
+                  id="project-type"
+                  name="project_type"
+                  className="w-full bg-background border border-border rounded px-3 py-2 text-text font-mono text-sm focus:outline-none focus:border-primary transition-colors appearance-none"
+                >
+                  <option value="">&quot;select_type&quot;</option>
+                  <option value="Data Strategy">&quot;data_strategy&quot;</option>
+                  <option value="Analytics & BI">&quot;analytics_bi&quot;</option>
+                  <option value="Data Engineering">&quot;data_engineering&quot;</option>
+                  <option value="AI Development">&quot;ai_development&quot;</option>
+                  <option value="Other">&quot;other&quot;</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-text-muted mb-1">
+                  <span className="text-primary">$</span> email=
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="&quot;your@email.com&quot;"
+                  className="w-full bg-background border border-border rounded px-3 py-2 text-text font-mono text-sm placeholder:text-text-muted/40 focus:outline-none focus:border-primary transition-colors"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-text-muted mb-1">
+                  <span className="text-primary">$</span> message=
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  placeholder="&quot;tell me about your project...&quot;"
+                  className="w-full bg-background border border-border rounded px-3 py-2 text-text font-mono text-sm placeholder:text-text-muted/40 focus:outline-none focus:border-primary transition-colors resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full px-6 py-3 bg-primary hover:bg-primary-hover text-text-bright font-mono font-bold text-sm tracking-wider uppercase transition-colors rounded"
               >
-                <option value="">Select a project type</option>
-                <option value="Data Strategy">Data Strategy</option>
-                <option value="Analytics & BI">Analytics & BI</option>
-                <option value="Data Engineering">Data Engineering</option>
-                <option value="AI Development">AI Development</option>
-                <option value="Other">Other</option>
-              </select>
+                $ send_message --now
+              </button>
             </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm text-text-muted mb-2">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                required
-                placeholder="your@email.com"
-                className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-primary transition-colors"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm text-text-muted mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                required
-                placeholder="Tell me about your project..."
-                className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full px-6 py-3 bg-primary hover:bg-primary-hover text-text-bright font-medium rounded-lg transition-colors"
-            >
-              Send message
-            </button>
           </form>
 
           <div className="flex justify-center gap-6 mt-8 pt-8 border-t border-border">
