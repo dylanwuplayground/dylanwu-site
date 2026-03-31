@@ -89,7 +89,9 @@ export const experience = [
     period: "May 2017 – May 2018",
     domain: "Mobile Search",
     highlights: [
-      "Built the company's first automated reporting system and interactive Qlik Sense dashboards using Python and Redshift, reducing manual reporting time by 90%",
+      "First data analyst hire, leading analytics, data engineering, and data science for 50M+ mobile users across North America and Southeast Asia",
+      "Mined 100B+ search records to uncover customer insights and search behaviors, driving product experiments that enhanced user search experiences",
+      "Built the company's first automated reporting system using Python, Redshift, and Tableau to track KPIs for internal stakeholders and external partners",
     ],
   },
 ];
