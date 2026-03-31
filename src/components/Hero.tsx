@@ -112,7 +112,7 @@ export default function Hero() {
           <span className="text-text-bright"> &amp; </span>
           <span className="text-primary italic">AI Builder.</span>
           <br />
-          <span className="text-text text-2xl md:text-3xl font-normal tracking-normal leading-relaxed mt-2 block min-h-[3rem]">
+          <span className="text-text text-lg md:text-2xl font-normal tracking-normal leading-relaxed mt-4 block min-h-[2rem]">
             <TypingAnimation text="10 years building data-driven cultures at high-growth startups." delay={1200} />
           </span>
         </motion.h2>
