@@ -31,16 +31,22 @@ export default function Education() {
             className="bg-surface border border-border rounded-xl p-8 hover:border-primary/30 transition-colors text-center"
           >
             {/* School logo */}
-            <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+            <div className="w-16 h-16 mx-auto mb-5 rounded-xl bg-surface-hover border border-border flex items-center justify-center overflow-hidden">
               {edu.school === "USC" ? (
-                <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
-                  <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" className="fill-primary font-heading font-bold" fontSize="14">USC</text>
-                  <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="1" className="stroke-primary/40" />
+                /* USC interlocking SC - cardinal and gold */
+                <svg viewBox="0 0 48 48" className="w-12 h-12">
+                  <rect width="48" height="48" fill="#990000" rx="4" />
+                  <text x="50%" y="52%" dominantBaseline="middle" textAnchor="middle" fontFamily="Georgia, serif" fontWeight="bold" fontSize="22" fill="#FFC72C" letterSpacing="-2">SC</text>
                 </svg>
               ) : (
-                <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
-                  <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" className="fill-primary font-heading font-bold" fontSize="11">IOWA</text>
-                  <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="1" className="stroke-primary/40" />
+                /* Iowa Hawkeye - black and gold */
+                <svg viewBox="0 0 48 48" className="w-12 h-12">
+                  <rect width="48" height="48" fill="#000000" rx="4" />
+                  {/* Simplified Hawkeye shape */}
+                  <ellipse cx="24" cy="24" rx="14" ry="11" fill="#FFCD00" />
+                  <ellipse cx="28" cy="22" rx="5" ry="5" fill="#000000" />
+                  <ellipse cx="29" cy="21" rx="2" ry="2" fill="#FFCD00" />
+                  <path d="M10 24 Q14 14 24 13 Q18 18 16 24 Z" fill="#FFCD00" />
                 </svg>
               )}
             </div>

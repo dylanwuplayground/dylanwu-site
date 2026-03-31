@@ -32,7 +32,7 @@ export const domainExpertise = [
       "Practical fluency across backend and frontend systems — sharpens judgment on what's possible, what's easy, and when the data isn't worth the plumbing.",
   },
   {
-    title: "Data & Analytics Engineering",
+    title: "Analytics Engineering",
     description:
       "The full path from raw data into reliable business insight — data modeling, transformations, and the quality controls that keep data trustworthy at every layer.",
   },

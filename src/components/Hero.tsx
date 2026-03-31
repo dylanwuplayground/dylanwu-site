@@ -28,7 +28,7 @@ function TypingAnimation({ text, delay = 0 }: { text: string; delay?: number }) 
     <span>
       {displayed}
       {displayed.length < text.length && (
-        <span className="inline-block w-[2px] h-[1em] bg-primary ml-0.5 animate-pulse align-text-bottom" />
+        <span className="inline-block w-[2px] h-[1em] bg-current ml-0.5 animate-pulse align-text-bottom" />
       )}
     </span>
   );
@@ -112,7 +112,7 @@ export default function Hero() {
           <span className="text-text-bright"> &amp; </span>
           <span className="text-primary italic">AI Builder.</span>
           <br />
-          <span className="text-text-muted/70 text-2xl md:text-3xl font-normal tracking-normal leading-relaxed mt-2 block min-h-[3rem]">
+          <span className="text-text text-2xl md:text-3xl font-normal tracking-normal leading-relaxed mt-2 block min-h-[3rem]">
             <TypingAnimation text="10 years building data-driven cultures at high-growth startups." delay={1200} />
           </span>
         </motion.h2>

@@ -29,7 +29,7 @@ const domainIcons: Record<string, React.ReactNode> = {
       <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.58-3.57m0 0a3 3 0 10-4.68-2.72m4.68 2.72L6 6.64m5.42 8.53l5.58-3.57m0 0a3 3 0 104.68-2.72m-4.68 2.72L18 6.64M12 20.76V18M12 18a3 3 0 100-6 3 3 0 000 6z" />
     </svg>
   ),
-  "Data & Analytics Engineering": (
+  "Analytics Engineering": (
     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
     </svg>
