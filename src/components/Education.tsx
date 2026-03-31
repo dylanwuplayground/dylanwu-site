@@ -31,19 +31,17 @@ export default function Education() {
             className="bg-surface border border-border rounded-xl p-8 hover:border-primary/30 transition-colors text-center"
           >
             {/* School logo */}
-            <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-text-bright/10 flex items-center justify-center overflow-hidden">
+            <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
               {edu.school === "USC" ? (
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/University_of_Southern_California_seal.svg/150px-University_of_Southern_California_seal.svg.png"
-                  alt="USC seal"
-                  className="w-12 h-12 object-contain"
-                />
+                <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
+                  <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" className="fill-primary font-heading font-bold" fontSize="14">USC</text>
+                  <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="1" className="stroke-primary/40" />
+                </svg>
               ) : (
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/University_of_Iowa_seal.svg/150px-University_of_Iowa_seal.svg.png"
-                  alt="University of Iowa seal"
-                  className="w-12 h-12 object-contain"
-                />
+                <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
+                  <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" className="fill-primary font-heading font-bold" fontSize="11">IOWA</text>
+                  <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="1" className="stroke-primary/40" />
+                </svg>
               )}
             </div>
             <h3 className="font-heading font-bold text-text-bright text-lg">
