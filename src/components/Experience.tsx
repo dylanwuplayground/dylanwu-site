@@ -45,7 +45,7 @@ export default function Experience() {
                   {isLeft ? (
                     <>
                       <div className="text-right pr-8">
-                        <div className="bg-surface border border-border rounded-xl p-6 inline-block text-left hover:border-primary/30 transition-colors">
+                        <div className="bg-surface border border-border rounded-xl p-6 inline-block text-left hover:border-primary/30 transition-colors max-w-md">
                           <h3 className="font-heading font-semibold text-text-bright text-lg">
                             {exp.company}
                           </h3>
@@ -54,6 +54,16 @@ export default function Experience() {
                           <p className="text-text-muted text-sm mt-2 border-t border-border pt-2">
                             {exp.domain}
                           </p>
+                          {exp.highlights && (
+                            <ul className="mt-3 space-y-1.5 border-t border-border pt-3">
+                              {exp.highlights.map((h, hi) => (
+                                <li key={hi} className="text-text-muted text-xs leading-relaxed flex gap-2">
+                                  <span className="text-primary mt-1 shrink-0">▸</span>
+                                  <span>{h}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
                       </div>
                       <div />
@@ -62,7 +72,7 @@ export default function Experience() {
                     <>
                       <div />
                       <div className="pl-8">
-                        <div className="bg-surface border border-border rounded-xl p-6 inline-block hover:border-primary/30 transition-colors">
+                        <div className="bg-surface border border-border rounded-xl p-6 inline-block hover:border-primary/30 transition-colors max-w-md">
                           <h3 className="font-heading font-semibold text-text-bright text-lg">
                             {exp.company}
                           </h3>
@@ -71,6 +81,16 @@ export default function Experience() {
                           <p className="text-text-muted text-sm mt-2 border-t border-border pt-2">
                             {exp.domain}
                           </p>
+                          {exp.highlights && (
+                            <ul className="mt-3 space-y-1.5 border-t border-border pt-3">
+                              {exp.highlights.map((h, hi) => (
+                                <li key={hi} className="text-text-muted text-xs leading-relaxed flex gap-2">
+                                  <span className="text-primary mt-1 shrink-0">▸</span>
+                                  <span>{h}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
                       </div>
                     </>
@@ -88,6 +108,16 @@ export default function Experience() {
                     <p className="text-text-muted text-sm mt-2 border-t border-border pt-2">
                       {exp.domain}
                     </p>
+                    {exp.highlights && (
+                      <ul className="mt-3 space-y-1.5 border-t border-border pt-3">
+                        {exp.highlights.map((h, hi) => (
+                          <li key={hi} className="text-text-muted text-xs leading-relaxed flex gap-2">
+                            <span className="text-primary mt-1 shrink-0">▸</span>
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </div>
               </motion.div>
