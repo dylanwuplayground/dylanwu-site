@@ -93,25 +93,25 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
     offset: ["start end", "end start"],
   });
 
-  // Barrel/drum transforms: cards wrap around a cylinder surface
-  // entering (0) -> center (0.5) -> exiting (1)
-  const rotateX = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [50, 15, 0, -15, -50]);
-  const y = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [60, 15, 0, -15, -60]);
+  // Drum effect via scale + Y-offset + opacity (no rotateX = no blur)
+  // Cards compress and shift as they enter/exit, creating barrel illusion
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [80, 20, 0, -20, -80]);
+  const scaleX = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [0.75, 0.92, 1, 0.92, 0.75]);
+  const scaleY = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [0.6, 0.9, 1, 0.9, 0.6]);
   const opacity = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.35, 0.65, 0.85, 1],
-    [0, 0.4, 1, 1, 0.4, 0],
+    [0, 0.15, 0.3, 0.7, 0.85, 1],
+    [0, 0.3, 1, 1, 0.3, 0],
   );
-  const scale = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [0.85, 0.95, 1, 0.95, 0.85]);
 
   return (
     <motion.div
       ref={cardRef}
       style={{
-        rotateX,
         y,
+        scaleX,
+        scaleY,
         opacity,
-        scale,
         transformOrigin: "center center",
         willChange: "transform, opacity",
       }}
