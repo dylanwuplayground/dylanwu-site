@@ -80,28 +80,43 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-2xl">
+      <div className="relative z-10 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-4">
+          <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-6">
             {hero.location}
           </p>
         </motion.div>
 
+        {/* Big statement headline — Stitch style */}
         <motion.h1
-          className="text-6xl md:text-8xl font-heading font-bold text-text-bright tracking-tighter mb-6"
+          className="text-6xl md:text-8xl font-heading font-bold leading-[0.9] tracking-tighter mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
         >
-          {hero.name}
+          <span className="text-text-bright">Building </span>
+          <span className="text-primary italic">Data-Driven</span>
+          <br />
+          <span className="text-text-bright">Cultures.</span>
         </motion.h1>
 
+        {/* Name */}
+        <motion.p
+          className="text-2xl md:text-3xl font-heading font-bold text-text-bright tracking-tight mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          {hero.name}
+        </motion.p>
+
+        {/* Tagline with typing animation */}
         <motion.div
-          className="text-lg md:text-xl text-text-muted leading-relaxed max-w-xl min-h-[3.5rem]"
+          className="text-lg md:text-xl text-text-muted leading-relaxed max-w-2xl min-h-[3.5rem]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3, delay: 0.6 }}
@@ -110,16 +125,22 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="mt-8"
+          className="flex gap-4 mt-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
         >
           <a
             href="#contact"
-            className="px-6 py-3 bg-primary hover:bg-primary-hover text-text-bright font-medium rounded-lg transition-colors"
+            className="px-8 py-4 bg-primary hover:bg-primary-hover text-text-bright font-bold text-sm tracking-widest uppercase transition-colors"
           >
-            Get in touch
+            Get in Touch
+          </a>
+          <a
+            href="#expertise"
+            className="px-8 py-4 bg-surface border border-border hover:border-primary/50 text-text-bright font-bold text-sm tracking-widest uppercase transition-colors"
+          >
+            Expertise
           </a>
         </motion.div>
       </div>
