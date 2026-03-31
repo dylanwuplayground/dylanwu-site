@@ -142,7 +142,7 @@ export const education = [
 
 export const contact = {
   cta: "Want to build a data strategy for your company? Let's talk.",
-  email: "dylanwu516@gmail.com",
+  email: "hello@dylanwu.me",
   linkedin: "https://www.linkedin.com/in/yilewu/",
   github: "https://github.com/dylanwuplayground",
 };

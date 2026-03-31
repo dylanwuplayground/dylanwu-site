@@ -103,7 +103,7 @@
       "id": 11,
       "date": "2026-03-29",
       "agent": "builder",
-      "summary": "User-directed refinements: corrected LinkedIn (yilewu) and GitHub (dylanwuplayground) URLs, removed View Work button from hero, centered contact section with FormSubmit.co integration (dylanwu516@gmail.com), enlarged education cards, added mParticle/Redshift/Optimizely/Split/Amplitude to tech stack.",
+      "summary": "User-directed refinements: corrected LinkedIn (yilewu) and GitHub (dylanwuplayground) URLs, removed View Work button from hero, centered contact section with FormSubmit.co integration (hello@dylanwu.me), enlarged education cards, added mParticle/Redshift/Optimizely/Split/Amplitude to tech stack.",
       "features_worked_on": [2, 3, 6, 7, 8],
       "outcome": "pass",
       "notes": "Updated CLAUDE.md with post-build decisions so future agents understand the rationale."
