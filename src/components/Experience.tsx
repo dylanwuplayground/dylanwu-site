@@ -56,12 +56,12 @@ interface TimelineRole {
 function CardContent({ exp }: { exp: (typeof experience)[number] }) {
   return (
     <>
-      <h3 className="font-heading font-semibold text-text-bright text-xl">
+      <h3 className="font-heading font-bold text-text-bright text-2xl">
         {exp.company}
       </h3>
-      <p className="text-primary text-sm mt-1.5 font-mono">{exp.role}</p>
-      <p className="text-text-muted text-sm mt-1 font-mono">{exp.period}</p>
-      <p className="text-text-muted text-sm mt-3 border-t border-border pt-3">
+      <p className="text-primary text-base mt-2 font-mono">{exp.role}</p>
+      <p className="text-text-muted text-base mt-1 font-mono">{exp.period}</p>
+      <p className="text-text-muted text-base mt-3 border-t border-border pt-3">
         {exp.domain}
       </p>
       {exp.highlights && (
