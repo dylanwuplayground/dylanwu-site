@@ -86,7 +86,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-6">
+          <p className="text-primary font-mono text-[10px] tracking-[0.3em] uppercase mb-6">
             {hero.location}
           </p>
         </motion.div>

@@ -33,7 +33,7 @@ function SkillBar({ name, delay }: { name: string; delay: number }) {
   return (
     <div ref={ref} className="space-y-1.5">
       <div className="flex justify-between text-sm">
-        <span className="text-text">{name}</span>
+        <span className="text-text font-mono">{name}</span>
       </div>
       <div className="h-2 bg-border rounded-full overflow-hidden">
         <motion.div
@@ -56,7 +56,7 @@ export default function TechStack() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-4">
+        <p className="text-primary font-mono text-[10px] tracking-[0.3em] uppercase mb-4">
           Technical Stack
         </p>
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-10">

@@ -14,7 +14,7 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-4">
+          <p className="text-primary font-mono text-[10px] tracking-[0.3em] uppercase mb-4">
             Inquiry
           </p>
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-2">

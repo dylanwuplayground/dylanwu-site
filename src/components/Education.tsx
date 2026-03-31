@@ -12,7 +12,7 @@ export default function Education() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-4">
+        <p className="text-primary font-mono text-[10px] tracking-[0.3em] uppercase mb-4">
           Academic Background
         </p>
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-10">
@@ -42,7 +42,7 @@ export default function Education() {
               {edu.school}
             </h3>
             <p className="text-text mt-2">{edu.degree}</p>
-            <p className="text-text-muted text-sm mt-1">{edu.year}</p>
+            <p className="text-text-muted text-sm mt-1 font-mono">{edu.year}</p>
           </motion.div>
         ))}
       </div>
