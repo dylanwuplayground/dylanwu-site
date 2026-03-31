@@ -187,19 +187,34 @@ function DirectionalRocket({
 
   // Rocket position follows scroll
   const rocketTop = useTransform(scrollYProgress, [0.05, 0.9], ["0%", "100%"]);
-  // Trail height follows rocket
-  const trailHeight = useTransform(scrollYProgress, [0.05, 0.9], ["0%", "100%"]);
+  // Trail follows rocket position
+  const trailProgress = useTransform(scrollYProgress, [0.05, 0.9], [0, 100]);
 
   return (
     <>
-      {/* Trail line — always behind the rocket */}
+      {/* Trail line — switches sides based on scroll direction */}
+      {/* Scrolling down: trail above rocket (top-anchored) */}
       <motion.div
-        className="absolute w-[2px] bg-gradient-to-b from-primary/0 via-primary/60 to-primary/0 origin-top"
+        className="absolute w-[2px] origin-top"
         style={{
           left: "140px",
           top: 0,
-          height: trailHeight,
+          height: useTransform(trailProgress, (v) => `${v}%`),
           translateX: "-0.5px",
+          opacity: scrollDir === "down" ? 1 : 0,
+          background: "linear-gradient(to bottom, transparent, var(--color-primary))",
+        }}
+      />
+      {/* Scrolling up: trail below rocket (bottom-anchored) */}
+      <motion.div
+        className="absolute w-[2px] origin-bottom"
+        style={{
+          left: "140px",
+          bottom: 0,
+          height: useTransform(trailProgress, (v) => `${100 - v}%`),
+          translateX: "-0.5px",
+          opacity: scrollDir === "up" ? 1 : 0,
+          background: "linear-gradient(to top, transparent, var(--color-primary))",
         }}
       />
 
@@ -244,8 +259,7 @@ export default function Experience() {
     offset: ["start end", "end start"],
   });
 
-  // Drawing line animation
-  const lineHeight = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
+  // lineHeight removed — replaced by rocket trail
 
   // Build timeline model
   const roles: TimelineRole[] = useMemo(
