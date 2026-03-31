@@ -45,12 +45,12 @@ export default function DomainExpertise() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-2">
-          Domain Expertise
-        </h2>
-        <p className="text-text-muted text-sm tracking-wide uppercase mb-10">
+        <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-4">
           Core Competencies
         </p>
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-10">
+          Domain Expertise
+        </h2>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

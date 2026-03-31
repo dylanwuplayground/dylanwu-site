@@ -15,7 +15,7 @@ export default function Experience() {
         <p className="text-primary font-heading text-[10px] tracking-[0.3em] uppercase mb-4">
           Professional Chronology
         </p>
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-12">
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-bright tracking-tight mb-10">
           Experience
         </h2>
       </motion.div>

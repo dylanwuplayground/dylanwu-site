@@ -53,7 +53,7 @@ Personal portfolio site for Dylan Wu at dylanwu.me. Next.js + Tailwind CSS, depl
 | Company | Role | Period | Domain |
 |---------|------|--------|--------|
 | Zenbusiness | Staff Data Analyst | Mar 2025 – Present | Business Compliance |
-| Route | Staff Product Analyst → Team Lead | Sep 2021 – Dec 2024 | eCommerce |
+| Route | Team Lead → Staff Product Analyst | Sep 2021 – Dec 2024 | eCommerce |
 | Acorns | Senior Data Analyst | Mar 2020 – Sep 2021 | Fintech |
 | Neustar | Data Analyst | Jun 2018 – Feb 2020 | Data strategy for marketing science (serves Fortune 500) |
 | Zowdow | Data Analyst (first analyst hire) | May 2017 – May 2018 | Mobile Search |
