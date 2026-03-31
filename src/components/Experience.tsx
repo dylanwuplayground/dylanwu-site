@@ -53,6 +53,36 @@ interface TimelineRole {
 // Card content (kept from original)
 // ---------------------------------------------------------------------------
 
+function RoleContent({
+  role,
+  period,
+  highlights,
+}: {
+  role: string;
+  period: string;
+  highlights: string[];
+}) {
+  return (
+    <>
+      <p className="text-primary text-base mt-2 font-mono">{role}</p>
+      <p className="text-text-muted text-base mt-1 font-mono">{period}</p>
+      {highlights.length > 0 && (
+        <ul className="mt-3 space-y-2 border-t border-border pt-3">
+          {highlights.map((h, hi) => (
+            <li
+              key={hi}
+              className="text-text-muted text-sm leading-relaxed flex gap-2"
+            >
+              <span className="text-primary mt-1 shrink-0">▸</span>
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}
+
 function CardContent({ exp }: { exp: (typeof experience)[number] }) {
   return (
     <>
@@ -103,6 +133,12 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
     [0, 0.5, 1, 1, 0.5, 0],
   );
 
+  // SubRole crossfade: role 1 fades out, role 2 fades in between 0.55–0.65
+  const role1Opacity = useTransform(scrollYProgress, [0.55, 0.65], [1, 0]);
+  const role2Opacity = useTransform(scrollYProgress, [0.55, 0.65], [0, 1]);
+
+  const hasSubRole = !!exp.subRole;
+
   return (
     <motion.div
       ref={cardRef}
@@ -114,7 +150,43 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
       }}
       className="bg-surface border border-border rounded-xl p-6 hover:border-primary/30 transition-colors"
     >
-      <CardContent exp={exp} />
+      {hasSubRole ? (
+        <>
+          <h3 className="font-heading font-bold text-text-bright text-2xl">
+            {exp.company}
+          </h3>
+
+          {/* Crossfade container for role content */}
+          <div className="relative">
+            {/* Role 1 (primary) */}
+            <motion.div style={{ opacity: role1Opacity }}>
+              <RoleContent
+                role={exp.role}
+                period={exp.period}
+                highlights={exp.highlights ?? []}
+              />
+            </motion.div>
+
+            {/* Role 2 (subRole) — absolute-positioned to overlap */}
+            <motion.div
+              className="absolute inset-0"
+              style={{ opacity: role2Opacity }}
+            >
+              <RoleContent
+                role={exp.subRole!.role}
+                period={exp.subRole!.period}
+                highlights={exp.subRole!.highlights ?? []}
+              />
+            </motion.div>
+          </div>
+
+          <p className="text-text-muted text-base mt-3 border-t border-border pt-3">
+            {exp.domain}
+          </p>
+        </>
+      ) : (
+        <CardContent exp={exp} />
+      )}
     </motion.div>
   );
 }

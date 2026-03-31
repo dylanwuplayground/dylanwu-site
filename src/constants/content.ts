@@ -52,14 +52,22 @@ export const experience = [
   },
   {
     company: "Route",
-    role: "Team Lead → Staff Product Analyst",
-    period: "Sep 2021 – Dec 2024",
+    role: "Staff Product Analyst",
+    period: "Oct 2022 – Dec 2024",
     domain: "eCommerce",
     highlights: [
       "Architected 100+ data models and pipelines, standardizing KPI definitions across Consumer and SaaS products",
       "Built first centralized customer profiling system in Databricks — 150+ attributes, 20M+ daily users",
       "Led first consumer monetization initiative through customer profiling and iterative experiments, unlocking $2–3M annual revenue",
     ],
+    subRole: {
+      role: "Team Lead / Manager, Analytics & Research",
+      period: "Sep 2021 – Oct 2022",
+      highlights: [
+        "Built and grew the product analytics team to 10 analysts, supporting 5+ product lines",
+        "Improved forecasting accuracy by introducing time series models to predict customer growth trends",
+      ],
+    },
   },
   {
     company: "Acorns",
