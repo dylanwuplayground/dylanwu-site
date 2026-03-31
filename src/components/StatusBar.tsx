@@ -23,7 +23,7 @@ export default function StatusBar() {
   }, []);
 
   return (
-    <header className="fixed top-0 right-0 w-full lg:w-[calc(100%-16rem)] z-40 bg-background/80 backdrop-blur-xl border-b border-border font-mono text-[10px] tracking-[0.1em] uppercase flex justify-between items-center px-6 md:px-8 h-10">
+    <header className="fixed top-0 right-0 w-full lg:w-[calc(100%-16rem)] z-40 bg-background/80 backdrop-blur-xl border-b border-border font-mono text-[10px] tracking-[0.2em] uppercase flex justify-between items-center px-6 md:px-8 h-10">
       <div className="flex items-center gap-4">
         <span className="text-text-muted">dylanwu.me v2.0</span>
         <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />

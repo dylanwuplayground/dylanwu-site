@@ -38,7 +38,7 @@ body {
 
 /* Glitch hover effect */
 .glitch-hover:hover {
-  animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+  animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) forwards 2;
 }
 
 @keyframes glitch {
