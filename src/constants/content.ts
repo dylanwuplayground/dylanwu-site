@@ -45,21 +45,20 @@ export const experience = [
     period: "Mar 2025 – Present",
     domain: "Business Compliance",
     highlights: [
-      "Led renewal pricing analysis uncovering long-term risks and a $2M ARR customer cohort",
-      "Revamped executive dashboards and reporting workflows via Tableau",
-      "Detected multiple data quality issues, partnered with engineering to ensure accuracy",
+      "Led renewal pricing analysis uncovering long-term risks and a $2M ARR customer cohort, driving new pricing tests",
+      "Revamped executive dashboards and reporting workflows via Tableau, uncovering gamified KPIs and ROI misalignment",
+      "Built an AI agent that surfaced 3-4x more churn signals vs. manual analysis",
     ],
   },
   {
     company: "Route",
-    role: "Staff Product Analyst → Team Lead",
+    role: "Team Lead → Staff Product Analyst",
     period: "Sep 2021 – Dec 2024",
     domain: "eCommerce",
     highlights: [
-      "Established company-wide data-driven decision framework for Consumer and SaaS products",
-      "Built first centralized customer profiling system — 150+ attributes, 20M+ daily users",
-      "Led first successful consumer monetization initiative, unlocking $2–3M annual revenue",
-      "Built and grew product analytics team to 10 analysts across 5+ product lines",
+      "Architected 100+ data models and pipelines, standardizing KPI definitions across Consumer and SaaS products",
+      "Built first centralized customer profiling system in Databricks — 150+ attributes, 20M+ daily users",
+      "Led first consumer monetization initiative through customer profiling and iterative experiments, unlocking $2–3M annual revenue",
     ],
   },
   {
@@ -69,8 +68,8 @@ export const experience = [
     domain: "Fintech",
     highlights: [
       "Led analytics for debit card, smart deposit, and money transfer product lines",
-      "Established KPIs and built interactive Tableau dashboards for cross-functional teams",
-      "Automated FP&A reporting workflows for marketing ROI and revenue forecast accuracy",
+      "Established KPIs with executives and built interactive Tableau dashboards for cross-functional teams",
+      "Automated FP&A reporting workflows to deliver timely marketing ROI insights and enhance revenue forecast accuracy",
     ],
   },
   {
@@ -79,9 +78,9 @@ export const experience = [
     period: "Jun 2018 – Feb 2020",
     domain: "Data strategy for marketing science (serves Fortune 500)",
     highlights: [
-      "Led end-to-end data strategy for marketing mix modeling and Tableau dashboards",
-      "Redesigned 100+ data pipelines, cutting project duration by 50%",
-      "Consulted on data-driven marketing strategies for Fortune 500 clients",
+      "Led end-to-end data strategy for marketing mix modeling, project management, and Tableau dashboard building",
+      "Redesigned 100+ data pipelines and sources, partnering with 50+ data providers, cutting project duration by 50%",
+      "Consulted on data-driven marketing strategies by analyzing complex datasets using Python, SQL, and Tableau",
     ],
   },
   {
@@ -90,8 +89,7 @@ export const experience = [
     period: "May 2017 – May 2018",
     domain: "Mobile Search",
     highlights: [
-      "Built company's first automated reporting system and Qlik Sense dashboards",
-      "Reduced manual reporting time by 90%",
+      "Built the company's first automated reporting system and interactive Qlik Sense dashboards using Python and Redshift, reducing manual reporting time by 90%",
     ],
   },
 ];
