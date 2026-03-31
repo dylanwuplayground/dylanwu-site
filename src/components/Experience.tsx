@@ -56,20 +56,20 @@ interface TimelineRole {
 function CardContent({ exp }: { exp: (typeof experience)[number] }) {
   return (
     <>
-      <h3 className="font-heading font-semibold text-text-bright text-lg">
+      <h3 className="font-heading font-semibold text-text-bright text-xl">
         {exp.company}
       </h3>
-      <p className="text-primary text-sm mt-1 font-mono">{exp.role}</p>
+      <p className="text-primary text-sm mt-1.5 font-mono">{exp.role}</p>
       <p className="text-text-muted text-sm mt-1 font-mono">{exp.period}</p>
-      <p className="text-text-muted text-sm mt-2 border-t border-border pt-2">
+      <p className="text-text-muted text-sm mt-3 border-t border-border pt-3">
         {exp.domain}
       </p>
       {exp.highlights && (
-        <ul className="mt-3 space-y-1.5 border-t border-border pt-3">
+        <ul className="mt-3 space-y-2 border-t border-border pt-3">
           {exp.highlights.map((h, hi) => (
             <li
               key={hi}
-              className="text-text-muted text-xs leading-relaxed flex gap-2"
+              className="text-text-muted text-sm leading-relaxed flex gap-2"
             >
               <span className="text-primary mt-1 shrink-0">▸</span>
               <span>{h}</span>
@@ -209,7 +209,7 @@ export default function Experience() {
   );
 
   return (
-    <section id="experience" className="py-20 px-6 md:px-12">
+    <section id="experience" className="py-20 px-6 md:px-12 text-center md:text-left">
       {/* Section header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -230,7 +230,7 @@ export default function Experience() {
       {/* ============================================================= */}
       <div
         ref={containerRef}
-        className="relative hidden md:block"
+        className="relative hidden md:block max-w-4xl mx-auto"
         style={{ perspective: "600px" }}
       >
         <div className="relative">
