@@ -45,7 +45,7 @@ export default function Sidebar() {
       {/* Desktop sidebar */}
       <aside className="hidden lg:flex fixed left-0 top-0 h-screen w-64 bg-surface border-r border-border flex-col z-50">
         <div className="p-6 border-b border-border">
-          <h2 className="font-heading text-xl text-text-bright font-bold">Dylan Wu</h2>
+          <h2 className="font-heading text-xl text-text-bright font-bold glitch-hover cursor-default">Dylan Wu</h2>
           <p className="text-sm text-text-muted mt-1">Analytics & AI</p>
         </div>
 
@@ -126,7 +126,7 @@ export default function Sidebar() {
               className="lg:hidden fixed left-0 top-0 h-screen w-64 bg-surface border-r border-border flex flex-col z-50"
             >
               <div className="p-6 border-b border-border">
-                <h2 className="font-heading text-xl text-text-bright font-bold">Dylan Wu</h2>
+                <h2 className="font-heading text-xl text-text-bright font-bold glitch-hover cursor-default">Dylan Wu</h2>
                 <p className="text-sm text-text-muted mt-1">Analytics & AI</p>
               </div>
 
