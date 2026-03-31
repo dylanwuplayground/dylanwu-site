@@ -56,16 +56,21 @@ interface TimelineRole {
 function RoleContent({
   role,
   period,
+  domain,
   highlights,
 }: {
   role: string;
   period: string;
+  domain?: string;
   highlights: string[];
 }) {
   return (
     <>
       <p className="text-primary text-base mt-2 font-mono">{role}</p>
       <p className="text-text-muted text-base mt-1 font-mono">{period}</p>
+      {domain && (
+        <p className="text-text-muted text-sm mt-1">{domain}</p>
+      )}
       {highlights.length > 0 && (
         <ul className="mt-3 space-y-2 border-t border-border pt-3">
           {highlights.map((h, hi) => (
@@ -91,9 +96,7 @@ function CardContent({ exp }: { exp: (typeof experience)[number] }) {
       </h3>
       <p className="text-primary text-base mt-2 font-mono">{exp.role}</p>
       <p className="text-text-muted text-base mt-1 font-mono">{exp.period}</p>
-      <p className="text-text-muted text-base mt-3 border-t border-border pt-3">
-        {exp.domain}
-      </p>
+      <p className="text-text-muted text-sm mt-1">{exp.domain}</p>
       {exp.highlights && (
         <ul className="mt-3 space-y-2 border-t border-border pt-3">
           {exp.highlights.map((h, hi) => (
@@ -133,9 +136,9 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
     [0, 0.5, 1, 1, 0.5, 0],
   );
 
-  // SubRole crossfade: role 1 fades out, role 2 fades in between 0.55–0.65
-  const role1Opacity = useTransform(scrollYProgress, [0.55, 0.65], [1, 0]);
-  const role2Opacity = useTransform(scrollYProgress, [0.55, 0.65], [0, 1]);
+  // SubRole crossfade: trigger around 0.35–0.45 to align with ~2022 on timeline
+  const role1Opacity = useTransform(scrollYProgress, [0.35, 0.45], [1, 0]);
+  const role2Opacity = useTransform(scrollYProgress, [0.35, 0.45], [0, 1]);
 
   const hasSubRole = !!exp.subRole;
 
@@ -163,6 +166,7 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
               <RoleContent
                 role={exp.role}
                 period={exp.period}
+                domain={exp.domain}
                 highlights={exp.highlights ?? []}
               />
             </motion.div>
@@ -175,14 +179,11 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
               <RoleContent
                 role={exp.subRole!.role}
                 period={exp.subRole!.period}
+                domain={exp.domain}
                 highlights={exp.subRole!.highlights ?? []}
               />
             </motion.div>
           </div>
-
-          <p className="text-text-muted text-base mt-3 border-t border-border pt-3">
-            {exp.domain}
-          </p>
         </>
       ) : (
         <CardContent exp={exp} />
