@@ -40,7 +40,7 @@ export const domainExpertise = [
 
 export const experience = [
   {
-    company: "Zenbusiness",
+    company: "ZenBusiness",
     role: "Staff Data Analyst",
     period: "Mar 2025 – Present",
     domain: "Business Compliance",
