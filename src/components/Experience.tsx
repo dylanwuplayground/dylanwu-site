@@ -136,11 +136,61 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
     [0, 0.5, 1, 1, 0.5, 0],
   );
 
-  // SubRole crossfade: trigger around 0.35–0.45 to align with ~2022 on timeline
-  const role1Opacity = useTransform(scrollYProgress, [0.35, 0.45], [1, 0]);
-  const role2Opacity = useTransform(scrollYProgress, [0.35, 0.45], [0, 1]);
-
   const hasSubRole = !!exp.subRole;
+
+  // Whole-card flip for subRole transition (0.35–0.45 scroll range)
+  // rotateX: 0° (front visible) → 180° (back visible)
+  const flipRotation = useTransform(scrollYProgress, [0.35, 0.45], [0, -180]);
+  // Front: visible when < 90°, back: visible when > 90°
+  const frontOpacity = useTransform(flipRotation, (r) => (Math.abs(r) <= 90 ? 1 : 0));
+  const backOpacity = useTransform(flipRotation, (r) => (Math.abs(r) > 90 ? 1 : 0));
+  const frontRotateX = flipRotation;
+  const backRotateX = useTransform(flipRotation, (r) => r + 180);
+
+  if (hasSubRole) {
+    return (
+      <motion.div
+        ref={cardRef}
+        style={{ y, scale, opacity, transformOrigin: "center center" }}
+      >
+        <div className="relative" style={{ perspective: "800px" }}>
+          {/* Front face — primary role */}
+          <motion.div
+            style={{
+              rotateX: frontRotateX,
+              opacity: frontOpacity,
+              backfaceVisibility: "hidden",
+              transformOrigin: "center center",
+            }}
+            className="bg-surface border border-border rounded-xl p-6 hover:border-primary/30 transition-colors"
+          >
+            <CardContent exp={exp} />
+          </motion.div>
+
+          {/* Back face — subRole */}
+          <motion.div
+            className="absolute inset-0 bg-surface border border-border rounded-xl p-6 hover:border-primary/30 transition-colors"
+            style={{
+              rotateX: backRotateX,
+              opacity: backOpacity,
+              backfaceVisibility: "hidden",
+              transformOrigin: "center center",
+            }}
+          >
+            <h3 className="font-heading font-bold text-text-bright text-2xl">
+              {exp.company}
+            </h3>
+            <RoleContent
+              role={exp.subRole!.role}
+              period={exp.subRole!.period}
+              domain={exp.domain}
+              highlights={exp.subRole!.highlights ?? []}
+            />
+          </motion.div>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
@@ -153,41 +203,7 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
       }}
       className="bg-surface border border-border rounded-xl p-6 hover:border-primary/30 transition-colors"
     >
-      {hasSubRole ? (
-        <>
-          <h3 className="font-heading font-bold text-text-bright text-2xl">
-            {exp.company}
-          </h3>
-
-          {/* Crossfade container for role content */}
-          <div className="relative">
-            {/* Role 1 (primary) */}
-            <motion.div style={{ opacity: role1Opacity }}>
-              <RoleContent
-                role={exp.role}
-                period={exp.period}
-                domain={exp.domain}
-                highlights={exp.highlights ?? []}
-              />
-            </motion.div>
-
-            {/* Role 2 (subRole) — absolute-positioned to overlap */}
-            <motion.div
-              className="absolute inset-0"
-              style={{ opacity: role2Opacity }}
-            >
-              <RoleContent
-                role={exp.subRole!.role}
-                period={exp.subRole!.period}
-                domain={exp.domain}
-                highlights={exp.subRole!.highlights ?? []}
-              />
-            </motion.div>
-          </div>
-        </>
-      ) : (
-        <CardContent exp={exp} />
-      )}
+      <CardContent exp={exp} />
     </motion.div>
   );
 }
