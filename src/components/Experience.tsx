@@ -136,9 +136,16 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
     [0, 0.5, 1, 1, 0.5, 0],
   );
 
-  // SubRole crossfade: trigger around 0.35–0.45 to align with ~2022 on timeline
-  const role1Opacity = useTransform(scrollYProgress, [0.35, 0.45], [1, 0]);
-  const role2Opacity = useTransform(scrollYProgress, [0.35, 0.45], [0, 1]);
+  // SubRole flip: trigger around 0.35–0.45 to align with ~2022 on timeline
+  // rotateX goes from 0 → 180 to create a vertical card-flip effect
+  const flipRotation = useTransform(scrollYProgress, [0.35, 0.45], [0, 180]);
+  // Front face: visible 0–90°, hidden 90–180°
+  const role1Opacity = useTransform(flipRotation, (r) => (r <= 90 ? 1 : 0));
+  // Back face: hidden 0–90°, visible 90–180°
+  const role2Opacity = useTransform(flipRotation, (r) => (r > 90 ? 1 : 0));
+  // Front rotates 0→180, back starts at -180→0 (so text isn't mirrored)
+  const role1RotateX = flipRotation;
+  const role2RotateX = useTransform(flipRotation, (r) => r - 180);
 
   const hasSubRole = !!exp.subRole;
 
@@ -159,10 +166,17 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
             {exp.company}
           </h3>
 
-          {/* Crossfade container for role content */}
-          <div className="relative">
-            {/* Role 1 (primary) */}
-            <motion.div style={{ opacity: role1Opacity }}>
+          {/* Flip container for role content */}
+          <div className="relative" style={{ perspective: "800px" }}>
+            {/* Role 1 (primary) — front face */}
+            <motion.div
+              style={{
+                opacity: role1Opacity,
+                rotateX: role1RotateX,
+                backfaceVisibility: "hidden",
+                transformOrigin: "center center",
+              }}
+            >
               <RoleContent
                 role={exp.role}
                 period={exp.period}
@@ -171,10 +185,15 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
               />
             </motion.div>
 
-            {/* Role 2 (subRole) — absolute-positioned to overlap */}
+            {/* Role 2 (subRole) — back face, absolute-positioned to overlap */}
             <motion.div
               className="absolute inset-0"
-              style={{ opacity: role2Opacity }}
+              style={{
+                opacity: role2Opacity,
+                rotateX: role2RotateX,
+                backfaceVisibility: "hidden",
+                transformOrigin: "center center",
+              }}
             >
               <RoleContent
                 role={exp.subRole!.role}
