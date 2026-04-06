@@ -36,6 +36,7 @@ export default function Contact() {
           >
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_subject" value="New inquiry from dylanwu.me" />
+            <input type="hidden" name="_next" value="https://dylanwu.me/#contact" />
 
             <div>
               <label htmlFor="project-type" className="block text-sm text-text-muted mb-2">
