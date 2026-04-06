@@ -1,9 +1,37 @@
 "use client";
 
+import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { contact } from "@/constants/content";
 
 export default function Contact() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${contact.email}`, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <section id="contact" className="py-20 px-6 md:px-12">
       <div className="max-w-xl mx-auto">
@@ -29,68 +57,81 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <form
-            action={`https://formsubmit.co/${contact.email}`}
-            method="POST"
-            className="space-y-5"
-          >
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_subject" value="New inquiry from dylanwu.me" />
-            <input type="hidden" name="_next" value="https://dylanwu.me/#contact" />
-
-            <div>
-              <label htmlFor="project-type" className="block text-sm text-text-muted mb-2">
-                Project type
-              </label>
-              <select
-                id="project-type"
-                name="project_type"
-                className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm focus:outline-none focus:border-primary transition-colors appearance-none"
+          {status === "sent" ? (
+            <div className="text-center py-12">
+              <p className="text-text-bright text-lg font-medium mb-2">Message sent!</p>
+              <p className="text-text-muted text-sm">I'll get back to you soon.</p>
+              <button
+                onClick={() => setStatus("idle")}
+                className="mt-6 text-primary hover:text-primary-hover text-sm transition-colors"
               >
-                <option value="">Select a project type</option>
-                <option value="Data Strategy">Data Strategy</option>
-                <option value="Analytics & BI">Analytics & BI</option>
-                <option value="Data Engineering">Data Engineering</option>
-                <option value="AI Development">AI Development</option>
-                <option value="Other">Other</option>
-              </select>
+                Send another message
+              </button>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_subject" value="New inquiry from dylanwu.me" />
 
-            <div>
-              <label htmlFor="email" className="block text-sm text-text-muted mb-2">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                required
-                placeholder="your@email.com"
-                className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-primary transition-colors"
-              />
-            </div>
+              <div>
+                <label htmlFor="project-type" className="block text-sm text-text-muted mb-2">
+                  Project type
+                </label>
+                <select
+                  id="project-type"
+                  name="project_type"
+                  className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm focus:outline-none focus:border-primary transition-colors appearance-none"
+                >
+                  <option value="">Select a project type</option>
+                  <option value="Data Strategy">Data Strategy</option>
+                  <option value="Analytics & BI">Analytics &amp; BI</option>
+                  <option value="Data Engineering">Data Engineering</option>
+                  <option value="AI Development">AI Development</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm text-text-muted mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                required
-                placeholder="Tell me about your project..."
-                className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none"
-              />
-            </div>
+              <div>
+                <label htmlFor="email" className="block text-sm text-text-muted mb-2">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="your@email.com"
+                  className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-primary transition-colors"
+                />
+              </div>
 
-            <button
-              type="submit"
-              className="w-full px-6 py-3 bg-primary hover:bg-primary-hover text-text-bright font-medium rounded-lg transition-colors"
-            >
-              Send message
-            </button>
-          </form>
+              <div>
+                <label htmlFor="message" className="block text-sm text-text-muted mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  placeholder="Tell me about your project..."
+                  className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="w-full px-6 py-3 bg-primary hover:bg-primary-hover text-text-bright font-medium rounded-lg transition-colors disabled:opacity-50"
+              >
+                {status === "sending" ? "Sending..." : status === "error" ? "Try again" : "Send message"}
+              </button>
+
+              {status === "error" && (
+                <p className="text-red-400 text-sm text-center">Something went wrong. Please try again.</p>
+              )}
+            </form>
+          )}
 
           <div className="flex justify-center gap-6 mt-8 pt-8 border-t border-border">
             <a
