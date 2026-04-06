@@ -72,6 +72,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-5">
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_subject" value="New inquiry from dylanwu.me" />
+              <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
 
               <div>
                 <label htmlFor="project-type" className="block text-sm text-text-muted mb-2">
@@ -114,6 +115,7 @@ export default function Contact() {
                   name="message"
                   rows={4}
                   required
+                  minLength={20}
                   placeholder="Tell me about your project..."
                   className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none"
                 />
